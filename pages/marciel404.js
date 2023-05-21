@@ -6,16 +6,52 @@ function play(){
 
   document.getElementById("video").addEventListener('ended',myHandler,false)
   const video = document.getElementById("video")
+  const button2 = document.getElementById("buttonDivStop")
+
+  document.getElementById("buttonPlay").remove()
 
   if ( video.style.display == "none"){
-      video.style.display=""
+    video.style.display=""
   }
 
   video.play()
-  function myHandler(){
-      video.style.display="none"
 
+  const b2 = document.createElement("button")
+  b2.onclick = stop
+  b2.id = "buttonStop"
+
+  if (!document.getElementById("buttonStop")){
+    b2.appendChild(document.createTextNode("stop"))
+    button2.appendChild(b2)
   }
+
+  function myHandler(){
+    stop()
+  }
+}
+
+function stop(){
+
+  const video = document.getElementById("video")
+  const buttonStop = document.getElementById("buttonStop")
+  const button2 = document.getElementById("buttonDivPlay")
+
+  video.pause()
+  video.currentTime = 0
+  video.style.display="none"
+
+  if (buttonStop != null){
+    buttonStop.remove()
+  }
+
+  const b2 = document.createElement("button")
+  b2.onclick = play
+  b2.id = "buttonPlay"
+  b2.appendChild(document.createTextNode("play"))
+  if (!document.getElementById("buttonPlay")){
+    button2.appendChild(b2)
+  }
+
 }
 
 export default function eu(){
@@ -32,10 +68,11 @@ export default function eu(){
 
       <main>
         <h1>Video que define marciel404</h1>
-        <button onClick={play}>play</button>
+        <div id="buttonDivPlay"></div>
+        <button id="buttonPlay" onClick={play}>play</button>
+        <video id="video"  src={require("../public/videos/marciel404.mp4")}></video>
+        <div id="buttonDivStop"></div>
       </main>
-
-      <video id="video" preload="none" src={require("../videos/marciel404.mp4")}></video>
 
       </div>
   )
