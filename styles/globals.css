@@ -1,3 +1,27 @@
-body {
-    background-color: black;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+#menu2 li, #menu2 ul {
+  display: block;
+  text-align: right;
+  border-style: none;
+  list-style: none;
+}
+
+#menu li, #menu ul {
+  border-style: none;
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin-left: 55px;
+}
+
+header, footer {
+  background-color: aquamarine;
+  text-align: center;
 }
