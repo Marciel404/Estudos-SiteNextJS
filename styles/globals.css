@@ -1,27 +1,123 @@
-html, body {
+* {
+  font-family:Verdana, Geneva, sans-serif;
+  font-size: 20px;
   margin: 0;
   padding: 0;
-  background-color: black;
 }
 
-#menu2 li, #menu2 ul {
-  display: block;
-  text-align: right;
-  border-style: none;
-  list-style: none;
+html, body {
+  height: auto;
+  width: auto;
+  text-align: center;
+  background-color: black;
+  color: white;
 }
 
 #menu li, #menu ul {
   border-style: none;
   list-style: none;
   display: flex;
+  font-weight:900;
 }
 
-li {
-  margin-left: 55px;
+a {
+  font-style: italic;
+  text-decoration-line: none;
+  color: black;
 }
 
-header, footer {
+header {
+  background-color: aqua;
+}
+
+header > menu > ul > li{
+  background-color: white;
+  width: 100%;
+  height: 50px;
+}
+
+nav {
+  text-align: center;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+#login {
+  padding-right: 20px;
+  font-size: large;
+  font-style: italic;
+  color: black;
+  font-weight:900;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+i#burguer {
+  color: black;
+  text-align: left;
+  display: none;
+  width: 26px;
+}
+
+ul, li {
+  list-style: none;
+  background-color:black;
+  color: white;
+}
+
+#MenuBurguer {
+  display: none;
+}
+
+i#burguer:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+a {
+  padding-left: 20px;
+  font-size: large;
+  padding-top: 15px;
+  font-style: italic;
+  color: black;
+  font-weight:900;
+}
+
+footer {
+  align-content: center;
   background-color: aquamarine;
   text-align: center;
+  height: 100%;
+  color: black;
+}
+
+.NameRE {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+
+  nav {
+    display: none;
+  }
+
+  .NameRE{
+    color: black;
+    display: inline;
+    align-items: baseline;
+    font-size: large;
+    font-style: italic;
+    font-weight:900;
+  }
+
+  i#burguer{
+    display: block;
+  }
 }

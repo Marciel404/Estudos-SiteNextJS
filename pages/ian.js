@@ -14,6 +14,7 @@ function play(){
     video.style.display=""
   }
 
+  video.style.width = "50%"
   video.play()
 
   const b2 = document.createElement("button")
@@ -60,6 +61,9 @@ export default function ian(){
 
       <Head>
         <title>Ian</title>
+        <meta charset="UTF-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
 
       <Script>
@@ -70,7 +74,7 @@ export default function ian(){
         <h1>Video que define Ian</h1>
         <div id="buttonDivPlay"></div>
         <button id="buttonPlay" onClick={play}>play</button>
-        <video id="video"  src={require("../public/videos/ian.mp4")}></video>
+        <video id="video" src={require("../public/videos/ian.mp4")}></video>
         <div id="buttonDivStop"></div>
       </main>
 

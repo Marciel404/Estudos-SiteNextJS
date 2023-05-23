@@ -14,6 +14,8 @@ function play(){
     video.style.display=""
   }
 
+  video.style.width = "100%"
+  video.style.height = "100%"
   video.play()
 
   const b2 = document.createElement("button")
@@ -60,6 +62,9 @@ export default function eu(){
 
       <Head>
         <title>marciel404</title>
+        <meta charset="UTF-8"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
 
       <Script>
