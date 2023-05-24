@@ -63,7 +63,7 @@ const HeaderLogado = () => {
         })
         .catch(err => {
 
-            window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1018958083764002919&redirect_uri=http%3A%2F%2Flocalhost%2Fdashboard%2Fmenu&response_type=code&scope=identify%20guilds%20email";
+            window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1018958083764002919&redirect_uri=https%3A%2F%2Fmarciel404.squareweb.app%2Fdashboard%2Fmenu&response_type=code&scope=identify%20guilds%20email";
 
         })
         
@@ -76,9 +76,6 @@ const HeaderLogado = () => {
 
     return(
         <div>
-            <Head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
-            </Head>
             <header>
             <h1 className="NameRE">RE=L</h1>
                 <i id="burguer" className="material-symbols-outlined" onClick={clickMenu}>menu</i>

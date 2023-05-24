@@ -1,15 +1,16 @@
 import * as React from "react";
 import axios from "axios";
 import HeaderLogado from "../../components/headerLogado";
-
+import configData from "../../configData.json"
+import FOOTER from "../../components/footer"
 
 function getLogin(){
     React.useEffect(() => {
 
         const API_ENDPOINT = 'https://discord.com/api/v10'
         const CLIENT_ID = '1018958083764002919'
-        const CLIENT_SECRET = process.env.CLIENT_SECRET
-        const REDIRECT_URI = 'http://localhost/dashboard/menu'
+        const CLIENT_SECRET = configData.CLIENT_SECRET
+        const REDIRECT_URI = 'https://marciel404.squareweb.app/dashboard/menu'
 
         
         if (!document.cookie){
@@ -60,6 +61,7 @@ const dashboard = () => {
         <div onLoad={getLogin()}>
             <main>
                 <HeaderLogado></HeaderLogado>
+                <FOOTER></FOOTER>
             </main>
         </div>
     )

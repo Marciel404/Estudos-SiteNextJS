@@ -13,6 +13,10 @@ html, body {
   color: white;
 }
 
+#login, #loginFULL {
+  padding-right: 10px;
+}
+
 #menu li, #menu ul {
   border-style: none;
   list-style: none;
@@ -92,7 +96,7 @@ a {
 
 footer {
   align-content: center;
-  background-color: aquamarine;
+  background-color: aqua;
   text-align: center;
   height: 100%;
   color: black;

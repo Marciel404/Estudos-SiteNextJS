@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import FOOTER from '../components/footer';
 import Header from '../components/header'
+import ReactPlayer from 'react-player';
 
 export default function Home(){
   return (
@@ -17,7 +18,6 @@ export default function Home(){
         <h1>Estudos NextJs</h1>
         <FOOTER></FOOTER>
       </main>
-      
     </div>
   )
 }
