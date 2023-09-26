@@ -1,43 +1,89 @@
 import * as React from "react";
-import axios from "axios";
 import Link from "next/link";
-import Head from "next/head";
+import clickMenu from "../scripts/clickMenu"
+import changeMode from "../scripts/changeMode"
+import checkColor from "../scripts/checkColor"
+import configData from "../configData.json"
+import axios from "axios";
 
-function clickMenu(){
-
-    const MenuStyle = document.getElementById("MenuBurguer")
-
-    if ( MenuStyle.style.display == "" || MenuStyle.style.display == "none"){
-        MenuStyle.style.display = "block"
-        MenuStyle.classList.add("open")
-    } else {
-        MenuStyle.style.display = "none"
-        MenuStyle.classList.remove("open")
-    }
-
-    const w=window.addEventListener("resize", mudarMenu, false);
-
-    function mudarMenu(){
-        if ( window.innerWidth > 700){
-            document.getElementById("MenuBurguer").style.display = "none"
-            window.removeEventListener("mousedown", mudarMenu, false)
-        }
-    }
-
-}
-
-const HeaderLogado = () => {
-
+export default function HeaderLogado(){
     React.useEffect(() => {
 
         const API_ENDPOINT = 'https://discord.com/api/v10'
+        const CLIENT_ID = '1018958083764002919'
+        const CLIENT_SECRET = configData["CLIENT_SECRET"]
+        const REDIRECT_URI = configData["linkRedirectAuth"]
+
+        const ck = document.cookie.split(";")
+
+        console.log(ck)
+        let val1 = []
+        for (var i = 0; i <= ck.length; i ++){
+            if (ck[i]){
+                if (ck[i].split("=")[0].replace(" ", "") == "RELOG"){
+                    val1 = ck[i].split("=")
+                }
+            }
+        }
+
+        if ( val1.length < 1 ){
+
+            var codeval = document.URL.split("=")[1]
+
+            axios(
+                {
+
+                    url: `${API_ENDPOINT}/oauth2/token`,
+                    method: "POST",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: {
+                        'client_id': CLIENT_ID,
+                        'client_secret': CLIENT_SECRET,
+                        'grant_type': 'authorization_code',
+                        'code': codeval,
+                        'redirect_uri': REDIRECT_URI
+                    }
+                }
+            )
+            .then(request => {
+                if (request.status === 200){
+
+                    return request.data
+
+                } else {
+
+                    return { error: request.status }
+
+                }
+
+            })
+            .then(response => {
+                document.cookie = `RELOG=${response.access_token}`
+            })
+            .catch(err => {
+            })
+        }
+
+        if ( window.location.search ){
+            window.location = document.URL.replace(window.location.search, "")
+        }
+
+        const ck2 = document.cookie.split(";")
+        let val2 = []
+        for (var i = 0; i <= ck.length; i ++){
+            if (ck2[i]){
+                if (ck2[i].split("=")[0].replace(" ", "") == "RELOG"){
+                    val2 = ck2[i].split("=")
+                }
+            }
+        }
 
         axios(
             {
-
+                method: "GET",
                 url: `${API_ENDPOINT}/users/@me`,
                 headers: {
-                    "Authorization": `Bearer ${document.cookie.slice(6)}`
+                    "Authorization": `Bearer ${val2[1]}`
                 }
 
             }
@@ -63,22 +109,17 @@ const HeaderLogado = () => {
         })
         .catch(err => {
 
-            window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1018958083764002919&redirect_uri=https%3A%2F%2Fmarciel404.squareweb.app%2Fdashboard%2Fmenu&response_type=code&scope=identify%20guilds%20email";
+            // window.location.href = configData["linkRedirectDiscord"];
 
         })
-        
-        if (window.location.search){
-            window.location = document.URL.replace(`${window.location.search}`,'')
-        }
-    }
-            
-);
-
+        checkColor()
+    })
     return(
         <div>
-            <header>
-            <h1 className="NameRE">RE=L</h1>
+            <header onLoad={checkColor()}>
+                <h1 className="NameRE">RE=L</h1>
                 <i id="burguer" className="material-symbols-outlined" onClick={clickMenu}>menu</i>
+                <i id="modo_escuro_mobile" className="material-symbols-outlined" onClick={changeMode}>dark_mode</i>
                 <menu id="MenuBurguer">
                     <ul>
                         <li>
@@ -94,7 +135,7 @@ const HeaderLogado = () => {
                             <Link href="/">Contato</Link>
                         </li>
                         <li>
-                        <Link href="/dashboard/menu" id="login"></Link>
+                            <Link href="/dashboard" id="login"></Link>
                         </li>
                     </ul>
                 </menu>
@@ -103,12 +144,10 @@ const HeaderLogado = () => {
                     <Link href="/">Funcionalidades</Link>
                     <Link href="/">Links</Link>
                     <Link href="/">Contato</Link>
-                    <Link href="/dashboard/menu" id="loginFull"></Link>
+                    <Link href="/dashboard" id="loginFull"></Link>
+                    <i id="modo_escuro" className="material-symbols-outlined" onClick={changeMode}>dark_mode</i>
                 </nav>
             </header>
         </div>
     )
-  
-}
-
-export default HeaderLogado;
+};

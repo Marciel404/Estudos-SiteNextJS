@@ -6,11 +6,11 @@
 }
 
 html, body {
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 #login, #loginFULL {
@@ -31,13 +31,36 @@ a {
 }
 
 header {
-  background-color: aqua;
+  background-color: blue;
+  color: white;
 }
 
 header > menu > ul > li{
-  background-color: white;
+  background-color: blue;
   width: 100%;
   height: 50px;
+}
+
+#modo_claro {
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+#modo_escuro {
+  color: white;
+  cursor: pointer;
+}
+
+#modo_escuro_mobile, #modo_claro_mobile {
+  display: none;
+  color: white;
+}
+
+
+#modo_escuro_mobile:hover, #modo_claro_mobile:hover, #modo_claro:hover
+#modo_escuro:hover, i#burguer:hover {
+  cursor: pointer;
 }
 
 nav {
@@ -51,7 +74,7 @@ nav {
   padding-right: 20px;
   font-size: large;
   font-style: italic;
-  color: black;
+  color: white;
   font-weight:900;
 }
 
@@ -64,7 +87,7 @@ nav {
 }
 
 i#burguer {
-  color: black;
+  color: white;
   text-align: left;
   display: none;
   width: 26px;
@@ -80,26 +103,21 @@ ul, li {
   display: none;
 }
 
-i#burguer:hover {
-  background-color: aqua;
-  cursor: pointer;
-}
-
 a {
   padding-left: 20px;
   font-size: large;
   padding-top: 15px;
   font-style: italic;
-  color: black;
+  color: white;
   font-weight:900;
 }
 
 footer {
   align-content: center;
-  background-color: aqua;
+  background-color: blue;
   text-align: center;
   height: 100%;
-  color: black;
+  color: white;
 }
 
 .NameRE {
@@ -113,7 +131,7 @@ footer {
   }
 
   .NameRE{
-    color: black;
+    color: white;
     display: inline;
     align-items: baseline;
     font-size: large;
@@ -123,5 +141,9 @@ footer {
 
   i#burguer{
     display: block;
+  }
+
+  #modo_escuro_mobile, #modo_claro_mobile{
+    display: flex;
   }
 }

@@ -7,17 +7,17 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "dotenv": "^16.1.4",
     "next": "latest",
     "next-videos": "1.4.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-player": "^2.12.0"
+    "react-dom": "18.2.0"
   },
   "name": "nextjs",
-  "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
+  "description": "Site para estudos NextJs.",
   "version": "1.0.0",
   "main": "next.config.js",
   "keywords": [],
-  "author": "",
+  "author": "marciel404",
   "license": "ISC"
 }

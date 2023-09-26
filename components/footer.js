@@ -1,9 +1,15 @@
-import styles from "../styles/Home.module.css"
+import mudarFooter from "../scripts/mudarfooter";
 
 export default function FOOTER() {
+
     return (
-        <div>
-            <footer>©Todos os direitos reservados a Marciel404</footer>
+
+        <div onLoad={mudarFooter()}>
+            <footer>
+                ©Todos os direitos reservados a Marciel404
+                <p id="footerMudando">Transformando sonhos em realidade</p>
+            </footer>
+            
         </div>
     )
 }

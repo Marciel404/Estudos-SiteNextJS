@@ -1,4 +1,6 @@
-function play(){
+import configData from "../configData.json"
+
+export default function play(){
 
   document.getElementById("video").addEventListener('ended',myHandler,false)
   document.getElementById("videoerror").addEventListener('ended',myHandler,false)
@@ -12,16 +14,17 @@ function play(){
 
   document.title = window.location.pathname.slice(1)
 
-  if ( video.style.display == "none" && !video.paused ){
+  if ( video.style.display == "none" && configData["videos"][document.URL.replace(`${window.location.origin}/`, "")] != undefined ){
     video.style.display=""
   }
 
-  if ( video.paused ) {
+  if ( configData["videos"][document.URL.replace(`${window.location.origin}/`, "")] == undefined ) {
     if ( videoerror.style.display == "none"){
       video.style.display == "none"
       videoerror.style.display=""
     }
     document.title = "error"
+    document.getElementById("video").src=""
     document.getElementById("error404").style.display=""
     videoerror.play()
   }
@@ -41,7 +44,7 @@ function play(){
     stop()
   }
 }
-  
+
 function stop(){
 
   const video = document.getElementById("video")
@@ -49,7 +52,7 @@ function stop(){
   const buttonStop = document.getElementById("buttonStop")
   const button2 = document.getElementById("buttonDivPlay")
 
-  if ( video.style.display == "none" && video.paused ){
+  if ( video.style.display == "none" ){
     videoerror.pause()
     videoerror.currentTime = 0
     videoerror.style.display="none"
@@ -73,5 +76,3 @@ function stop(){
   }
 
 }
-
-export default play;
